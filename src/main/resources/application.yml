@@ -1,14 +1,15 @@
 spring:
   datasource:
     url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/jobtracker-app}
-    username: ${JDBC_DATABASE_USERNAME:postgres}
-    password: ${JDBC_DATABASE_PASSWORD:<<YOUR_PASSWORD>>}
+    username: ${POSTGRES_SQL_USERNAME}
+    password: ${POSTGRES_SQL_PASSWORD}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
     open-in-view: false
     properties:
       hibernate:
@@ -19,8 +20,8 @@ spring:
           new_generator_mappings: true
   docker:
     compose:
-      lifecycle-management: start-only
-adzuna:
+      enabled: false
+adzuna: 
   api:
     base-url: https://api.adzuna.com/v1/api/jobs
     id: ${ADZUNA_API_ID}
