@@ -1,6 +1,6 @@
 package com.jobtracker.jobtracker_app.config;
 
-import com.jobtracker.jobtracker_app.service.UserDetailsServiceImpl;
+import com.jobtracker.jobtracker_app.domain.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,9 +34,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/api/auth/users"
+                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF protection for stateless APIs
+
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/api/jobs/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

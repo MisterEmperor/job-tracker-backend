@@ -1,8 +1,8 @@
 package com.jobtracker.jobtracker_app.repos;
 
-import com.jobtracker.jobtracker_app.domain.Job;
-import com.jobtracker.jobtracker_app.domain.JobApplication;
-import com.jobtracker.jobtracker_app.domain.User;
+import com.jobtracker.jobtracker_app.domain.model.Job;
+import com.jobtracker.jobtracker_app.domain.model.JobApplication;
+import com.jobtracker.jobtracker_app.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
